@@ -49,6 +49,23 @@ def h1(s):
     return res
 
 def h3(s):
-    # implement this function
     board, _, _ = s
-    return 0
+    n = len(board)
+    h3_value = 0
+
+    target_row = {}
+    target_col = {}
+
+    for idx, tile in enumerate(board):
+        if tile != 0:
+            target_row[tile] = idx // 3
+            target_col[tile] = idx % 3 
+
+    for idx, tile in enumerate(board):
+        if tile != 0:
+            current_row = idx // 3
+            current_col = idx % 3
+            h3_value += abs(current_row - target_row[tile]) + abs(current_col - target_col[tile])
+
+    return h3_value
+
