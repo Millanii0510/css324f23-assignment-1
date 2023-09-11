@@ -53,17 +53,14 @@ def h3(s):
     n = len(board)
     h3_value = 0
 
-    # Create dictionaries to store the target row and column for each tile
     target_row = {}
     target_col = {}
 
     for idx, tile in enumerate(board):
         if tile != 0:
-            # Calculate the target row and column for the current tile
-            target_row[tile] = idx // 3  # Integer division to get the row
-            target_col[tile] = idx % 3   # Modulus operation to get the column
+            target_row[tile] = idx // 3
+            target_col[tile] = idx % 3 
 
-    # Calculate the number of tiles out of their target row and column
     for idx, tile in enumerate(board):
         if tile != 0:
             current_row = idx // 3
