@@ -53,19 +53,13 @@ def h3(s):
     n = len(board)
     h3_value = 0
 
-    target_row = {}
-    target_col = {}
+    target_positions = {}  
 
     for idx, tile in enumerate(board):
         if tile != 0:
-            target_row[tile] = idx // 3
-            target_col[tile] = idx % 3 
-
-    for idx, tile in enumerate(board):
-        if tile != 0:
-            current_row = idx // 3
-            current_col = idx % 3
-            h3_value += abs(current_row - target_row[tile]) + abs(current_col - target_col[tile])
+            target_positions[tile] = current_position = divmod(idx, n)
+            target_position = target_positions[tile] 
+            h3_value += abs((current_position[0] - target_position[0]) + (current_position[1] - target_position[1]))
 
     return h3_value
 
