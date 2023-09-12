@@ -49,17 +49,18 @@ def h1(s):
     return res
 
 def h3(s):
+    goal = (1, 2, 3, 4, 5, 6, 7, 8, 0)
     board, _, _ = s
-    n = len(board)
-    h3_value = 0
+    res = 0
 
-    target_positions = {}  
-
-    for idx, tile in enumerate(board):
-        if tile != 0:
-            target_positions[tile] = current_position = divmod(idx, n)
-            target_position = target_positions[tile] 
-            h3_value += abs((current_position[0] - target_position[0]) + (current_position[1] - target_position[1]))
-
-    return h3_value
+    for idx in range(0,9):
+        if board[idx] != 0:
+            if goal[idx] != board[idx]:
+                d_row, d_col = divmod((board[idx])-1, 3)
+                i_row, i_col = divmod(idx, 3)
+                if d_row != i_row:
+                    res += 1
+                if d_col != i_col:
+                    res += 1
+    return res
 
